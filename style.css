@@ -1,0 +1,327 @@
+/* =========================
+   THEME  (dark navy + amber)
+========================= */
+:root {
+    --bg: #0b1220;
+    --card: #16213a;
+    --card-border: #26365a;
+    --tile: rgba(255, 255, 255, 0.06);
+    --text: #e8edf7;
+    --muted: #9aa8c7;
+    --accent: #fbbf24;
+    --accent-dark: #f59e0b;
+    --online: #34d399;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding: 45px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+h1 {
+    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#live-status {
+    display: inline-block;
+    position: relative;
+    margin-left: 8px;
+    padding-left: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--online);
+    vertical-align: middle;
+}
+
+#live-status::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    background: var(--online);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+/* =========================
+   SEARCH FORM
+========================= */
+#github-form {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 30px;
+    display: flex;
+    gap: 8px;
+}
+
+#github-username {
+    flex: 1;
+    height: 44px;
+    padding: 0 14px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+}
+
+#github-username::placeholder {
+    color: var(--muted);
+}
+
+#github-username:focus {
+    border-color: var(--accent);
+}
+
+#github-form button {
+    height: 44px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #1a1400;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#github-form button:hover {
+    background: var(--accent-dark);
+}
+
+/* =========================
+   PROFILE CARD
+   Left column : avatar, name, bio
+   Right columns: 3 stats, then button
+========================= */
+#show-profile {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    min-height: 300px;
+    margin: 0 auto;
+    padding: 30px;
+
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+
+    display: grid;
+    grid-template-columns: 240px repeat(3, 1fr);
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 14px;
+    align-items: center;
+}
+
+/* Avatar - left column */
+#show-profile img {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+}
+
+/* Name - under avatar */
+#show-profile h2 {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin-top: 14px;
+}
+
+/* Bio - under name */
+#show-profile p:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 3;
+    text-align: center;
+
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+/* Stats - right side, one column each */
+#show-profile p:nth-of-type(2),
+#show-profile p:nth-of-type(3),
+#show-profile p:nth-of-type(4) {
+    grid-row: 1;
+    align-self: center;
+    text-align: center;
+
+    padding: 18px 8px;
+    background: var(--tile);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    color: var(--text);
+}
+
+#show-profile p:nth-of-type(2) { grid-column: 2; }
+#show-profile p:nth-of-type(3) { grid-column: 3; }
+#show-profile p:nth-of-type(4) { grid-column: 4; }
+
+/* Visit profile button - right side, below stats */
+#show-profile a {
+    grid-column: 2 / 5;
+    grid-row: 2 / 4;
+    justify-self: center;
+    align-self: center;
+
+    padding: 10px 34px;
+    background: var(--accent);
+    color: #1a1400;
+    text-decoration: none;
+    border-radius: 999px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#show-profile a:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   LOADER
+========================= */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--card-border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: loader-spin 0.8s linear infinite;
+}
+
+@keyframes loader-spin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+.error {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 16px;
+    color: #f87171;
+    padding: 40px 10px;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 700px) {
+    h1 { font-size: 28px; }
+
+    #show-profile {
+        grid-template-columns: 170px repeat(3, 1fr);
+        padding: 24px 18px;
+    }
+
+    #show-profile img { width: 150px; height: 150px; }
+    #show-profile h2 { font-size: 26px; }
+
+    #show-profile p:nth-of-type(2),
+    #show-profile p:nth-of-type(3),
+    #show-profile p:nth-of-type(4) {
+        font-size: 14px;
+        padding: 14px 4px;
+    }
+
+    #show-profile a { font-size: 17px; padding: 9px 26px; }
+}
+
+/* =========================
+   MOBILE - everything stacks
+========================= */
+@media (max-width: 520px) {
+    body { padding: 25px 14px; }
+    h1 { font-size: 24px; }
+
+    #live-status {
+        display: block;
+        width: fit-content;
+        margin: 7px auto 0;
+    }
+
+    #github-form { flex-direction: column; }
+
+    #show-profile {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: none;
+        row-gap: 12px;
+        column-gap: 8px;
+        padding: 26px 14px;
+        min-height: 380px;
+    }
+
+    #show-profile img,
+    #show-profile h2,
+    #show-profile p:nth-of-type(1),
+    #show-profile a {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    #show-profile img { width: 140px; height: 140px; }
+    #show-profile h2 { font-size: 26px; margin-top: 4px; }
+
+    #show-profile p:nth-of-type(2),
+    #show-profile p:nth-of-type(3),
+    #show-profile p:nth-of-type(4) {
+        grid-row: auto;
+        font-size: 12px;
+        padding: 12px 2px;
+    }
+
+    #show-profile p:nth-of-type(2) { grid-column: 1; }
+    #show-profile p:nth-of-type(3) { grid-column: 2; }
+    #show-profile p:nth-of-type(4) { grid-column: 3; }
+
+    #show-profile a { margin-top: 6px; font-size: 16px; }
+}
